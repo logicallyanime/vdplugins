@@ -1,6 +1,6 @@
 import { DeepLResponse } from "../type"
 
-const API_URL = "https://api.deeplx.org/translate"
+const API_URL = "https://api.deeplx.org/v2/translate"
 
 const translate = async (text: string, source_lang: string = "auto", target_lang: string, original: boolean = false) => {
     try {
@@ -8,7 +8,8 @@ const translate = async (text: string, source_lang: string = "auto", target_lang
         const data: DeepLResponse = await (await fetch(API_URL, {
             method: "POST",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "Authorization": "DeepL-Auth-Key 14201e64-e570-4c2c-b8bc-ee2c6dc88ca5:fx"
             },
             body: JSON.stringify({
                 text,
